@@ -23,4 +23,31 @@ Cinema.prototype.filterByGenre = function (genre) {
   return result;
 };
 
+Cinema.prototype.checkYear = function (year) {
+  const years = this.films.map((film) => {
+    return film.year;
+  });
+  return years.includes(year);
+};
+
+Cinema.prototype.checkLengths = function (runningTime) {
+  const times = this.films.map((film) => {
+    return film.length;
+  });
+  const result = times.every((time) => {
+    return time >= runningTime;
+  });
+  return result;
+};
+
+Cinema.prototype.totalRunningTime = function () {
+  const times = this.films.map((film) => {
+    return film.length;
+  });
+  const result = times.reduce((totalTime, filmTime) => {
+    return totalTime + filmTime;
+  })
+  return result;
+};
+
 module.exports = Cinema;
